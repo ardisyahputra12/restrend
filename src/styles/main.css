@@ -1,3 +1,19 @@
-img {
-  display: block;
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Lato&family=Philosopher&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Philosopher', sans-serif;
+  color: #333;
+}
+
+footer p {
+  text-align: center;
+  padding: 15px 0;
+  background-color: #F97B22;
+  color: #FFF;
 }
