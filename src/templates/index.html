@@ -12,12 +12,31 @@
 </head>
 
 <body>
-  <skip-link></skip-link>
-  <app-bar></app-bar>
+  <a href="#maincontent" class="skip">Menuju ke konten</a>
+  <header>
+    <h1 tabindex="0">Restrend</h1>
+    <nav id="drawer">
+      <a href="/">Home</a>
+      <a href="#">Favorite</a>
+      <a href="https://www.linkedin.com/in/ardisaputra2022/">About Us</a>
+    </nav>
+    <button id="tab-menu">
+      <img src="./icons/hamburger-icon.svg" alt="open menu" tabindex="0">
+    </button>
+  </header>
+
   <main>
-    <hero-element></hero-element>
-    <catalog-list id="maincontent"></catalog-list>
+    <section class="hero">
+      <img class="hero-img" src="./images/heros/hero-image.jpg" alt="Hero Element" tabindex="0">
+      <p class="hero-content" tabindex="0">Restrend</p>
+    </section>
+    <section id="maincontent">
+      <h2 class="title" tabindex="0">Explore Restaurant</h2>
+      <p class="caption" tabindex="0">Find your favorite restaurant and satisfy yourself here</p>
+      <article class="catalog-list"></article>
+    </section>
   </main>
+
   <footer>
     <p tabindex="0">Copyright &copy; 2023 - Restrend</p>
   </footer>
