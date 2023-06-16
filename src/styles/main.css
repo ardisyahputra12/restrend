@@ -50,6 +50,7 @@ h1 {
   display: block;
   font-size: 20px;
   padding: 0 25px;
+  line-height: 70px;
 }
 
 #drawer a:hover,
@@ -79,8 +80,8 @@ h1 {
     position: absolute;
     transform: translate(-100%, 0);
     transition: transform 0.3s ease-in-out;
-    background-color: #FEE8B0;
-    border-top: 1px solid #fff;
+    background-color: #FFF;
+    border-bottom: 1px solid #DDD;
     flex-direction: column;
   }
 
@@ -89,8 +90,9 @@ h1 {
   }
 
   #drawer a {
-    padding: 15px;
-    border-top: 1px solid #fff;
+    font-size: 18px;
+    line-height: 52px;
+    border-top: 1px solid #DDD;
   }
 
   button {
