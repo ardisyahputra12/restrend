@@ -1,10 +1,12 @@
+import API_ENDPOINT from '../../global/api-endpoint';
+
 const createCatalogItemTemplate = ({
   name, description, pictureId, city, rating,
 }) => `
   <article class="content">
       <div class="picture">
           <h3 tabindex="0">Kota. ${city}</h3>
-          <img src="${pictureId}" alt="${name} in ${city}" tabindex="0">
+          <img src="${API_ENDPOINT.IMAGE_MEDIUM(pictureId)}" alt="${name} in ${city}" tabindex="0">
       </div>
       <div class="desc">
           <h2 tabindex="0">${name}</h2>
@@ -14,6 +16,4 @@ const createCatalogItemTemplate = ({
   </article>
 `;
 
-export {
-  createCatalogItemTemplate,
-};
+export default createCatalogItemTemplate;

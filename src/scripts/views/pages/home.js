@@ -1,5 +1,5 @@
-import data from '../../../public/data/DATA.json';
-import { createCatalogItemTemplate } from '../templates/template-creator';
+import RestaurantSource from '../../data/restaurant-source';
+import createCatalogItemTemplate from '../templates/template-creator';
 
 class Home extends HTMLElement {
   connectedCallback() {
@@ -21,9 +21,10 @@ class Home extends HTMLElement {
     `;
   }
 
-  _insertData() {
+  async _insertData() {
+    const restaurants = await RestaurantSource.getList();
     const catalogList = this.querySelector('.catalog-list');
-    data.restaurants.forEach((restaurant) => {
+    restaurants.forEach((restaurant) => {
       catalogList.innerHTML += createCatalogItemTemplate(restaurant);
     });
   }
