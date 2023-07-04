@@ -1,5 +1,5 @@
 import RestaurantSource from '../../data/restaurant-source';
-import createCatalogItemTemplate from '../templates/template-creator';
+import { createCatalogItemTemplate } from '../templates/template-creator';
 
 class Home extends HTMLElement {
   connectedCallback() {
@@ -14,18 +14,18 @@ class Home extends HTMLElement {
         <p class="hero-content" tabindex="0">Restrend</p>
       </section>
       <section id="main-content">
-        <h2 class="title" tabindex="0">Explore Restaurant</h2>
-        <p class="caption" tabindex="0">Find your favorite restaurant and satisfy yourself here</p>
-        <article class="catalog-list"></article>
+        <h2 class="main-content__title" tabindex="0">Explore Restaurant</h2>
+        <p class="main-content__caption" tabindex="0">Find your favorite restaurant and satisfy yourself here</p>
+        <article class="container-list-restaurant"></article>
       </section>
     `;
   }
 
   async _insertData() {
     const restaurants = await RestaurantSource.getList();
-    const catalogList = this.querySelector('.catalog-list');
+    const containerListRestaurant = this.querySelector('.container-list-restaurant');
     restaurants.forEach((restaurant) => {
-      catalogList.innerHTML += createCatalogItemTemplate(restaurant);
+      containerListRestaurant.innerHTML += createCatalogItemTemplate(restaurant);
     });
   }
 }
