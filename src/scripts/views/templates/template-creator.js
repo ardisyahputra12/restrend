@@ -22,7 +22,7 @@ const createCatalogItemTemplate = ({
 `;
 
 const createCatalogDetailTemplate = ({
-  name, description, city, address, pictureId, rating,
+  id, name, description, city, address, pictureId, rating,
 }) => `
   <article class="restaurant-detail">
     <div class="restaurant-detail__header">
@@ -60,6 +60,12 @@ const createCatalogDetailTemplate = ({
     <div class="restaurant-detail__review">
       <h3 tabindex="0">Review</h3>
       <div class="restaurant-detail__review__content" tabindex="0"></div>
+      <form class="restaurant-detail__review__form">
+        <input class="restaurant-detail__review__form__id" disabled hidden value="${id}">
+        <input type="text" class="restaurant-detail__review__form__name text-content" placeholder="Your name..." required tabindex="0">
+        <textarea rows="4" class="restaurant-detail__review__form__content text-content" placeholder="Type review..." required tabindex="0"></textarea>
+        <button type="submit" class="restaurant-detail__review__form__button text-content" tabindex="0">Send</button>
+      </form>
     </div>
   </article>
 `;
@@ -74,9 +80,11 @@ const createDetailMenuTemplate = (name) => `
 
 const createDetailReviewTemplate = ({ name, review, date }) => `
   <div class="restaurant-detail__review__item">
-    <h4 class="restaurant-detail__review__item__title" tabindex="0">${name}</h4>
+    <h4 tabindex="0">${name}</h4>
     <p class="text-content" tabindex="0">${review}</p>
-    <strong class="restaurant-detail__review__item__date text-content" tabindex="0">${date}</strong>
+    <p class="restaurant-detail__review__item__date text-content">
+      <time tabindex="0">${date}</time>
+    </p>
   </div>
 `;
 

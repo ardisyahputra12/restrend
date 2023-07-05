@@ -1,5 +1,6 @@
 import RestaurantSource from '../../data/restaurant-source';
 import UrlParser from '../../routes/url-parser';
+import ReviewInitiator from '../../utils/review-initiator';
 import {
   createCatalogDetailTemplate,
   createDetailCategoryTemplate,
@@ -28,6 +29,7 @@ class Detail extends HTMLElement {
     const restaurant = await RestaurantSource.getDetail(url.id);
     const containerDetailRestaurant = this.querySelector('.container-detail-restaurant');
     containerDetailRestaurant.innerHTML += createCatalogDetailTemplate(restaurant);
+    this._handleAddReview();
   }
 
   async _insertDataCategory() {
@@ -63,6 +65,15 @@ class Detail extends HTMLElement {
     const restaurantDetailReviewContent = this.querySelector('.restaurant-detail__review__content');
     restaurant.customerReviews.forEach((review) => {
       restaurantDetailReviewContent.innerHTML += createDetailReviewTemplate(review);
+    });
+  }
+
+  _handleAddReview() {
+    ReviewInitiator.init({
+      form: this.querySelector('.restaurant-detail__review__form'),
+      id: this.querySelector('.restaurant-detail__review__form__id'),
+      name: this.querySelector('.restaurant-detail__review__form__name'),
+      review: this.querySelector('.restaurant-detail__review__form__content'),
     });
   }
 }
