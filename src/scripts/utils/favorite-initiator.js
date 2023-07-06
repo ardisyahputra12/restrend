@@ -4,7 +4,7 @@ import { createFavoriteButtonTemplate, createFavoritedButtonTemplate } from '../
 const FavoriteInitiator = {
   async init({ favoriteButtonContainer, restaurant }) {
     this._favoriteButtonContainer = favoriteButtonContainer;
-    this._restaurant = restaurant;
+    this._restaurant = restaurant.restaurant;
     await this._renderButton();
   },
 

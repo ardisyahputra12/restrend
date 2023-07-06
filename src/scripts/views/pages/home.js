@@ -1,5 +1,5 @@
 import RestaurantSource from '../../data/restaurant-source';
-import { createCatalogItemTemplate } from '../templates/template-creator';
+import { createCatalogItemTemplate, createContentFailedTemplate } from '../templates/template-creator';
 
 class Home extends HTMLElement {
   connectedCallback() {
@@ -23,10 +23,18 @@ class Home extends HTMLElement {
 
   async _insertData() {
     const restaurants = await RestaurantSource.getList();
+    this._handleData(restaurants);
+  }
+
+  _handleData(restaurants) {
     const containerListRestaurant = this.querySelector('.container-list-restaurant');
-    restaurants.forEach((restaurant) => {
-      containerListRestaurant.innerHTML += createCatalogItemTemplate(restaurant);
-    });
+    if (!restaurants.error) {
+      restaurants.restaurants.forEach((restaurant) => {
+        containerListRestaurant.innerHTML += createCatalogItemTemplate(restaurant);
+      });
+    } else {
+      containerListRestaurant.innerHTML = createContentFailedTemplate();
+    }
   }
 }
 

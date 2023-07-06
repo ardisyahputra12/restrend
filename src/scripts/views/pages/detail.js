@@ -4,6 +4,7 @@ import FavoriteInitiator from '../../utils/favorite-initiator';
 import ReviewInitiator from '../../utils/review-initiator';
 import {
   createCatalogDetailTemplate,
+  createContentFailedTemplate,
   createDetailCategoryTemplate,
   createDetailMenuTemplate,
   createDetailReviewTemplate,
@@ -13,11 +14,6 @@ class Detail extends HTMLElement {
   connectedCallback() {
     this.render();
     this._insertData();
-    this._insertDataCategory();
-    this._insertDataMenuFood();
-    this._insertDataMenuDrink();
-    this._insertDataReview();
-    this._handleFavorite();
   }
 
   render() {
@@ -30,44 +26,57 @@ class Detail extends HTMLElement {
   async _insertData() {
     const url = UrlParser.parseActiveUrlWithoutCombiner();
     const restaurant = await RestaurantSource.getDetail(url.id);
-    const containerDetailRestaurant = this.querySelector('.container-detail-restaurant');
-    containerDetailRestaurant.innerHTML += createCatalogDetailTemplate(restaurant);
-    this._handleAddReview();
+    this._handleData(restaurant);
   }
 
-  async _insertDataCategory() {
-    const url = UrlParser.parseActiveUrlWithoutCombiner();
-    const restaurant = await RestaurantSource.getDetail(url.id);
+  _handleData(restaurant) {
+    const containerDetailRestaurant = this.querySelector('.container-detail-restaurant');
+    if (!restaurant.error) {
+      containerDetailRestaurant.innerHTML += createCatalogDetailTemplate(restaurant.restaurant);
+      this._insertDataCategory(restaurant);
+      this._insertDataMenuFood(restaurant);
+      this._insertDataMenuDrink(restaurant);
+      this._insertDataReview(restaurant);
+      this._handleFavorite(restaurant);
+      this._handleAddReview();
+    } else {
+      containerDetailRestaurant.innerHTML = createContentFailedTemplate();
+    }
+  }
+
+  async _insertDataCategory(restaurant) {
     const restaurantDetailCategoriContent = this.querySelector('.restaurant-detail__categori__content');
-    restaurant.categories.forEach((category) => {
+    restaurant.restaurant.categories.forEach((category) => {
       restaurantDetailCategoriContent.innerHTML += createDetailCategoryTemplate(category.name);
     });
   }
 
-  async _insertDataMenuFood() {
-    const url = UrlParser.parseActiveUrlWithoutCombiner();
-    const restaurant = await RestaurantSource.getDetail(url.id);
+  async _insertDataMenuFood(restaurant) {
     const restaurantDetailMenuFood = this.querySelector('.restaurant-detail__menu__food');
-    restaurant.menus.foods.forEach((food) => {
+    restaurant.restaurant.menus.foods.forEach((food) => {
       restaurantDetailMenuFood.innerHTML += createDetailMenuTemplate(food.name);
     });
   }
 
-  async _insertDataMenuDrink() {
-    const url = UrlParser.parseActiveUrlWithoutCombiner();
-    const restaurant = await RestaurantSource.getDetail(url.id);
+  async _insertDataMenuDrink(restaurant) {
     const restaurantDetailMenuDrink = this.querySelector('.restaurant-detail__menu__drink');
-    restaurant.menus.drinks.forEach((drink) => {
+    restaurant.restaurant.menus.drinks.forEach((drink) => {
       restaurantDetailMenuDrink.innerHTML += createDetailMenuTemplate(drink.name);
     });
   }
 
-  async _insertDataReview() {
-    const url = UrlParser.parseActiveUrlWithoutCombiner();
-    const restaurant = await RestaurantSource.getDetail(url.id);
+  async _insertDataReview(restaurant) {
     const restaurantDetailReviewContent = this.querySelector('.restaurant-detail__review__content');
-    restaurant.customerReviews.forEach((review) => {
+    restaurant.restaurant.customerReviews.forEach((review) => {
       restaurantDetailReviewContent.innerHTML += createDetailReviewTemplate(review);
+    });
+  }
+
+  async _handleFavorite(restaurant) {
+    const favoriteButtonContainer = this.querySelector('#favorite-button-container');
+    FavoriteInitiator.init({
+      favoriteButtonContainer,
+      restaurant,
     });
   }
 
@@ -77,16 +86,6 @@ class Detail extends HTMLElement {
       id: this.querySelector('.restaurant-detail__review__form__id'),
       name: this.querySelector('.restaurant-detail__review__form__name'),
       review: this.querySelector('.restaurant-detail__review__form__content'),
-    });
-  }
-
-  async _handleFavorite() {
-    const url = UrlParser.parseActiveUrlWithoutCombiner();
-    const restaurant = await RestaurantSource.getDetail(url.id);
-    const favoriteButtonContainer = this.querySelector('#favorite-button-container');
-    FavoriteInitiator.init({
-      favoriteButtonContainer,
-      restaurant,
     });
   }
 }

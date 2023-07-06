@@ -108,7 +108,19 @@ const createContentEmptyTemplate = () => `
       class="content-empty__gif"
       tabindex="0"
     >
-    <p class="content-empty__text text-content" tabindex="0">Favorite is empty!</p>
+    <p class="content-empty__text text-content" tabindex="0">Favorite is empty! <br> Mark your favorite restaurant.</p>
+  </div>
+`;
+
+const createContentFailedTemplate = () => `
+  <div class="content-empty">
+    <img
+      src="./images/failed-animation.gif"
+      alt="data is empty"
+      class="content-empty__gif"
+      tabindex="0"
+    >
+    <p class="content-empty__text text-content" tabindex="0">Something wrong. Failed to get data!</p>
   </div>
 `;
 
@@ -121,4 +133,5 @@ export {
   createFavoriteButtonTemplate,
   createFavoritedButtonTemplate,
   createContentEmptyTemplate,
+  createContentFailedTemplate,
 };

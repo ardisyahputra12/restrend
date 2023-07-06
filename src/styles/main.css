@@ -49,6 +49,26 @@ body::-webkit-scrollbar-thumb {
   transform: translate(-50%, -50%);
 }
 
+.content-empty {
+  height: 70vh;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.content-empty__gif {
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.content-empty__text {
+  margin-top: 12px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
 .text-content {
   line-height: 1.5;
   font-family: 'Lato', sans-serif;
@@ -473,17 +493,4 @@ h1 {
   font-size: 24px;
   color: #FFF;
   cursor: pointer;
-}
-
-.content-empty {
-  height: 55vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-}
-
-.content-empty__text {
-  margin-top: 12px;
-  font-size: 20px;
 }
