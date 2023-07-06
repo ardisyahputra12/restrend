@@ -24,6 +24,11 @@ class App {
     const page = routes[url];
     this._content.innerHTML = await page;
     footerText.classList.remove('loading-footer');
+    const skipLinkElem = document.querySelector('.skip');
+    skipLinkElem.addEventListener('click', (event) => {
+      event.preventDefault();
+      document.querySelector('#main-content').focus();
+    });
   }
 }
 
