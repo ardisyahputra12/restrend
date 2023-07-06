@@ -1,5 +1,6 @@
 import RestaurantSource from '../../data/restaurant-source';
 import UrlParser from '../../routes/url-parser';
+import FavoriteInitiator from '../../utils/favorite-initiator';
 import ReviewInitiator from '../../utils/review-initiator';
 import {
   createCatalogDetailTemplate,
@@ -16,11 +17,13 @@ class Detail extends HTMLElement {
     this._insertDataMenuFood();
     this._insertDataMenuDrink();
     this._insertDataReview();
+    this._handleFavorite();
   }
 
   render() {
     this.innerHTML = `
       <div class="container-detail-restaurant"></div>
+      <div id="favorite-button-container"></div>
     `;
   }
 
@@ -74,6 +77,16 @@ class Detail extends HTMLElement {
       id: this.querySelector('.restaurant-detail__review__form__id'),
       name: this.querySelector('.restaurant-detail__review__form__name'),
       review: this.querySelector('.restaurant-detail__review__form__content'),
+    });
+  }
+
+  async _handleFavorite() {
+    const url = UrlParser.parseActiveUrlWithoutCombiner();
+    const restaurant = await RestaurantSource.getDetail(url.id);
+    const favoriteButtonContainer = this.querySelector('#favorite-button-container');
+    FavoriteInitiator.init({
+      favoriteButtonContainer,
+      restaurant,
     });
   }
 }

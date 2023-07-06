@@ -13,7 +13,6 @@ const ReviewInitiator = {
         review: review.value,
       };
       this._addReview(data);
-      location.reload();
     });
   },
 
@@ -21,6 +20,7 @@ const ReviewInitiator = {
     const response = await RestaurantSource.addReview(data);
     // eslint-disable-next-line no-alert
     alert(response.message);
+    location.reload();
   },
 };
 

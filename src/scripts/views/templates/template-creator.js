@@ -88,10 +88,24 @@ const createDetailReviewTemplate = ({ name, review, date }) => `
   </div>
 `;
 
+const createFavoriteButtonTemplate = () => `
+  <button aria-label="favorite this movie" id="favorite-button" class="favorite">
+    <i class="fa fa-heart-o" aria-hidden="true"></i>
+  </button>
+`;
+
+const createFavoritedButtonTemplate = () => `
+  <button aria-label="unfavorite this movie" id="favorite-button" class="favorite">
+    <i class="fa fa-heart" aria-hidden="true"></i>
+  </button>
+`;
+
 export {
   createCatalogItemTemplate,
   createCatalogDetailTemplate,
   createDetailCategoryTemplate,
   createDetailMenuTemplate,
   createDetailReviewTemplate,
+  createFavoriteButtonTemplate,
+  createFavoritedButtonTemplate,
 };
