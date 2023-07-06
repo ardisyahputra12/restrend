@@ -100,6 +100,18 @@ const createFavoritedButtonTemplate = () => `
   </button>
 `;
 
+const createContentEmptyTemplate = () => `
+  <div class="content-empty">
+    <img
+      src="./images/empty-animation.gif"
+      alt="data is empty"
+      class="content-empty__gif"
+      tabindex="0"
+    >
+    <p class="content-empty__text text-content" tabindex="0">Favorite is empty!</p>
+  </div>
+`;
+
 export {
   createCatalogItemTemplate,
   createCatalogDetailTemplate,
@@ -108,4 +120,5 @@ export {
   createDetailReviewTemplate,
   createFavoriteButtonTemplate,
   createFavoritedButtonTemplate,
+  createContentEmptyTemplate,
 };

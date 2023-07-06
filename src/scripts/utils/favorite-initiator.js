@@ -18,7 +18,7 @@ const FavoriteInitiator = {
   },
 
   async _isRestaurantExist(id) {
-    const restaurant = await FavoriteRestaurantIdb.getRestaurant(id);
+    const restaurant = await FavoriteRestaurantIdb.get(id);
     return !!restaurant;
   },
 
@@ -26,7 +26,7 @@ const FavoriteInitiator = {
     this._favoriteButtonContainer.innerHTML = createFavoriteButtonTemplate();
     const favoriteButton = document.querySelector('#favorite-button');
     favoriteButton.addEventListener('click', async () => {
-      await FavoriteRestaurantIdb.putRestaurant(this._restaurant);
+      await FavoriteRestaurantIdb.put(this._restaurant);
       this._renderButton();
     });
   },
@@ -35,7 +35,7 @@ const FavoriteInitiator = {
     this._favoriteButtonContainer.innerHTML = createFavoritedButtonTemplate();
     const favoriteButton = document.querySelector('#favorite-button');
     favoriteButton.addEventListener('click', async () => {
-      await FavoriteRestaurantIdb.deleteRestaurant(this._restaurant.id);
+      await FavoriteRestaurantIdb.delete(this._restaurant.id);
       this._renderButton();
     });
   },

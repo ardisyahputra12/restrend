@@ -198,6 +198,10 @@ h1 {
   color: #F97B22;
 }
 
+.favorite-title {
+  margin: 20px 0 15px !important;
+}
+
 .main-content__caption {
   text-align: center;
   font-size: 20px;
@@ -404,25 +408,6 @@ h1 {
   color: #FFF;
 }
 
-.favorite {
-  width: 55px;
-  height: 55px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #F97B22;
-
-  position: fixed;
-  bottom: 16px;
-  right: 16px;
-  border-radius: 50%;
-  border: 0;
-
-  font-size: 24px;
-  color: #FFF;
-  cursor: pointer;
-}
-
 @media screen and (min-width: 1200px) {
   .restaurant-detail {
     padding: 24px;
@@ -454,4 +439,36 @@ h1 {
   .restaurant-detail__review__form__button {
     width: 110px;
   }
+}
+
+.favorite {
+  width: 55px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #F97B22;
+
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  border-radius: 50%;
+  border: 0;
+
+  font-size: 24px;
+  color: #FFF;
+  cursor: pointer;
+}
+
+.content-empty {
+  height: 55vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.content-empty__text {
+  margin-top: 12px;
+  font-size: 20px;
 }
