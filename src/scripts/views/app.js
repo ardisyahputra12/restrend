@@ -19,9 +19,11 @@ class App {
   }
 
   async renderPage() {
+    const footerText = document.querySelector('.footer-text');
     const url = UrlParser.parseActiveUrlWithCombiner();
     const page = routes[url];
     this._content.innerHTML = await page;
+    footerText.classList.remove('loading-footer');
   }
 }
 
