@@ -25,8 +25,8 @@ const DrawerInitiator = {
   _changeIconButton(button, drawer) {
     const buttonMenu = button;
     buttonMenu.innerHTML = drawer.classList.contains('open')
-      ? '<img src="./icons/close-icon.svg" alt="close menu" tabindex="0">'
-      : '<img src="./icons/hamburger-icon.svg" alt="open menu" tabindex="0">';
+      ? '<img src="./icons/close-icon.svg" alt="close menu">'
+      : '<img src="./icons/hamburger-icon.svg" alt="open menu">';
   },
 };
 

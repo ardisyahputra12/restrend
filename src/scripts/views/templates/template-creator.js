@@ -14,7 +14,7 @@ const createCatalogItemTemplate = ({
       >
     </div>
     <div class="restaurant-item__body">
-      <h2 tabindex="0"><a class="restaurant-item__body__title" href="/#/detail/${id}">${name}</a></h2>
+      <h2><a class="restaurant-item__body__title" href="/#/detail/${id}">${name}</a></h2>
       <h3 class="restaurant-item__body__subtitle" tabindex="0">Rating: ${rating}</h3>
       <p class="text-content" tabindex="0">${description.substring(0, 250)}...</p>
     </div>
@@ -38,7 +38,7 @@ const createCatalogDetailTemplate = ({
     </div>
     <div class="restaurant-detail__categori">
       <h3 tabindex="0">Categori</h3>
-      <div class="restaurant-detail__categori__content" tabindex="0"></div>
+      <div class="restaurant-detail__categori__content"></div>
     </div>
     <div class="restaurant-detail__overview">
       <h3 tabindex="0">Overview</h3>
@@ -49,22 +49,22 @@ const createCatalogDetailTemplate = ({
       <div class="restaurant-detail__container">
         <div class="restaurant-detail__container-menu">
           <h4 tabindex="0">Food</h4>
-          <ol class="restaurant-detail__menu__food" tabindex="0"></ol>
+          <ol class="restaurant-detail__menu__food"></ol>
         </div>
         <div class="restaurant-detail__container-menu">
           <h4 tabindex="0">Drink</h4>
-          <ol class="restaurant-detail__menu__drink" tabindex="0"></ol>
+          <ol class="restaurant-detail__menu__drink"></ol>
         </div>
       </div>
     </div>
     <div class="restaurant-detail__review">
       <h3 tabindex="0">Review</h3>
-      <div class="restaurant-detail__review__content" tabindex="0"></div>
+      <div class="restaurant-detail__review__content"></div>
       <form class="restaurant-detail__review__form">
         <input class="restaurant-detail__review__form__id" disabled hidden value="${id}">
-        <input type="text" class="restaurant-detail__review__form__name text-content" placeholder="Your name..." required tabindex="0">
-        <textarea rows="6" class="restaurant-detail__review__form__content text-content" placeholder="Type review..." required tabindex="0"></textarea>
-        <button type="submit" class="restaurant-detail__review__form__button text-content" tabindex="0">Send</button>
+        <input type="text" class="restaurant-detail__review__form__name text-content" placeholder="Your name..." required>
+        <textarea rows="6" class="restaurant-detail__review__form__content text-content" placeholder="Type review..." required></textarea>
+        <button type="submit" class="restaurant-detail__review__form__button text-content" aria-label="submit new review">Send</button>
       </form>
     </div>
   </article>
