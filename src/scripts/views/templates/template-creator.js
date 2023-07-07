@@ -63,7 +63,7 @@ const createCatalogDetailTemplate = ({
       <form class="restaurant-detail__review__form">
         <input class="restaurant-detail__review__form__id" disabled hidden value="${id}">
         <input type="text" class="restaurant-detail__review__form__name text-content" placeholder="Your name..." required tabindex="0">
-        <textarea rows="4" class="restaurant-detail__review__form__content text-content" placeholder="Type review..." required tabindex="0"></textarea>
+        <textarea rows="6" class="restaurant-detail__review__form__content text-content" placeholder="Type review..." required tabindex="0"></textarea>
         <button type="submit" class="restaurant-detail__review__form__button text-content" tabindex="0">Send</button>
       </form>
     </div>
