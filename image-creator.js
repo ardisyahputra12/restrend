@@ -7,7 +7,6 @@ const sharp = require('sharp');
 const imagemin = require('imagemin-cjs/cjs');
 const imageminMozjpeg = require('imagemin-mozjpeg');
 const imageminPngquant = require('imagemin-pngquant');
-const imageminWebp = require('imagemin-webp');
 
 const target = path.resolve(__dirname, 'src/public/images');
 const destination = path.resolve(__dirname, 'dist/images');
@@ -75,14 +74,11 @@ const compressImage = async () => {
     destination,
     plugins: [
       imageminMozjpeg({
-        quality: 50,
+        quality: 75,
         progressive: true,
       }),
       imageminPngquant({
         quality: [0.4, 0.6],
-      }),
-      imageminWebp({
-        quality: 50,
       }),
     ],
   });

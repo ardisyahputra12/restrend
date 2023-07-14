@@ -31,7 +31,6 @@
     "imagemin-cjs": "^8.0.1-b3",
     "imagemin-mozjpeg": "^9.0.0",
     "imagemin-pngquant": "^9.0.2",
-    "imagemin-webp": "^6.1.0",
     "jasmine-ajax": "^4.0.0",
     "jasmine-core": "^4.2.0",
     "karma": "^5.2.3",
