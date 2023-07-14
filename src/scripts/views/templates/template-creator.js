@@ -6,12 +6,15 @@ const createCatalogItemTemplate = ({
   <article class="restaurant-item">
     <div class="restaurant-item__header">
       <h3 class="restaurant-item__header__title" tabindex="0">Kota. ${city}</h3>
-      <img
-        class="restaurant-item__header__image"
-        src="${API_ENDPOINT.IMAGE_MEDIUM(pictureId)}"
-        alt="${name} in ${city}"
-        tabindex="0"
-      >
+      <picture>
+        <source srcset="${API_ENDPOINT.IMAGE_SMALL(pictureId)}" media="(max-width: 600px)">
+        <img
+          class="restaurant-item__header__image lazyload"
+          data-src="${API_ENDPOINT.IMAGE_LARGE(pictureId)}"
+          alt="${name} in ${city}"
+          tabindex="0"
+        >
+      </picture>
     </div>
     <div class="restaurant-item__body">
       <h2><a class="restaurant-item__body__title" href="/#/detail/${id}">${name}</a></h2>
@@ -29,12 +32,15 @@ const createCatalogDetailTemplate = ({
       <h2 tabindex="0">${name}</h2>
       <p class="text-content" tabindex="0">Rating: ${rating}</p>
       <p class="text-content" tabindex="0">${address}, ${city}</p>
-      <img
-        class="restaurant-detail__header__image"
-        src="${API_ENDPOINT.IMAGE_LARGE(pictureId)}"
-        alt="${name} in ${city}"
-        tabindex="0"
-      >
+      <picture>
+        <source srcset="${API_ENDPOINT.IMAGE_SMALL(pictureId)}" media="(max-width: 600px)">
+        <img
+          class="restaurant-detail__header__image lazyload"
+          data-src="${API_ENDPOINT.IMAGE_LARGE(pictureId)}"
+          alt="${name} in ${city}"
+          tabindex="0"
+        >
+      </picture>
     </div>
     <div class="restaurant-detail__categori">
       <h3 tabindex="0">Categori</h3>
@@ -102,24 +108,20 @@ const createFavoritedButtonTemplate = () => `
 
 const createContentEmptyTemplate = () => `
   <div class="content-empty">
-    <img
-      src="./images/empty-animation.gif"
-      alt="data is empty"
-      class="content-empty__gif"
-      tabindex="0"
-    >
+    <video class="content-empty__gif" aria-label="data is empty" autoplay loop muted playsinline>
+      <source src="./images/empty-animation.webm" type="video/webm">
+      <source src="./images/empty-animation.mp4" type="video/mp4">
+    </video>
     <p class="content-empty__text text-content" tabindex="0">Favorite is empty! <br> Mark your favorite restaurant.</p>
   </div>
 `;
 
 const createContentFailedTemplate = () => `
   <div class="content-empty">
-    <img
-      src="./images/failed-animation.gif"
-      alt="data is empty"
-      class="content-empty__gif"
-      tabindex="0"
-    >
+    <video class="content-empty__gif" aria-label="data is empty" autoplay loop muted playsinline>
+      <source src="./images/failed-animation.webm" type="video/webm">
+      <source src="./images/failed-animation.mp4" type="video/mp4">
+    </video>
     <p class="content-empty__text text-content" tabindex="0">Something wrong. Failed to get data!</p>
   </div>
 `;

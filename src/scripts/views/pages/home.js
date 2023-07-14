@@ -10,7 +10,12 @@ class Home extends HTMLElement {
   render() {
     this.innerHTML = `
       <section class="hero">
-        <img class="hero-img" src="./images/heros/hero-image.jpg" alt="Hero Element" tabindex="0">
+        <picture>
+          <source srcset="./images/hero-image-small.webp" type="image/webp" media="(max-width: 600px)">
+          <source srcset="./images/hero-image-small.jpg" type="image/jpeg" media="(max-width: 600px)">
+          <source srcset="./images/hero-image-large.webp" type="image/webp">
+          <img class="hero-img lazyload" data-src="./images/hero-image-large.jpg" alt="Hero Element" tabindex="0">
+        </picture>
         <p class="hero-content" tabindex="0">Restrend</p>
       </section>
       <section id="main-content">

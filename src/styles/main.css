@@ -449,16 +449,18 @@ h1 {
   color: #FFF;
 }
 
+@media screen and (min-width: 670px) {
+  .restaurant-detail__header__image {
+    max-width: 65%;
+    height: auto;
+  }
+}
+
 @media screen and (min-width: 1200px) {
   .restaurant-detail {
     padding: 24px;
     width: 70%;
     margin: 0 auto;
-  }
-
-  .restaurant-detail__header__image {
-    max-width: 65%;
-    height: auto;
   }
 
   .restaurant-detail__container {
