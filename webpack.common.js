@@ -27,10 +27,11 @@ module.exports = {
     ],
   },
   optimization: {
+    runtimeChunk: 'single',
     splitChunks: {
       chunks: 'all',
-      minSize: 20000,
-      maxSize: 70000,
+      minSize: 15000,
+      maxSize: 30000,
       minChunks: 1,
       maxAsyncRequests: 30,
       maxInitialRequests: 30,
