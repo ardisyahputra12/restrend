@@ -18,7 +18,6 @@ const ReviewInitiator = {
 
   async _addReview(data) {
     const response = await RestaurantSource.addReview(data);
-    // eslint-disable-next-line no-alert
     alert(response.message);
     location.reload();
   },
