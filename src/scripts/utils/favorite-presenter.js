@@ -1,10 +1,13 @@
-import FavoriteRestaurantIdb from '../data/favorite-restaurant-idb';
-import { createFavoriteButtonTemplate, createFavoritedButtonTemplate } from '../views/templates/template-creator';
+import {
+  createFavoriteRestaurantButtonTemplate,
+  createUnfavoriteRestaurantButtonTemplate,
+} from '../views/templates/template-creator';
 
-const FavoriteInitiator = {
-  async init({ favoriteButtonContainer, restaurant }) {
+const FavoritePresenter = {
+  async init({ favoriteButtonContainer, favoriteRestaurants, restaurant }) {
     this._favoriteButtonContainer = favoriteButtonContainer;
-    this._restaurant = restaurant.restaurant;
+    this._restaurant = restaurant;
+    this._favoriteRestaurants = favoriteRestaurants;
     await this._renderButton();
   },
 
@@ -18,27 +21,27 @@ const FavoriteInitiator = {
   },
 
   async _isRestaurantExist(id) {
-    const restaurant = await FavoriteRestaurantIdb.get(id);
+    const restaurant = await this._favoriteRestaurants.get(id);
     return !!restaurant;
   },
 
   _renderFavorite() {
-    this._favoriteButtonContainer.innerHTML = createFavoriteButtonTemplate();
+    this._favoriteButtonContainer.innerHTML = createFavoriteRestaurantButtonTemplate();
     const favoriteButton = document.querySelector('#favorite-button');
     favoriteButton.addEventListener('click', async () => {
-      await FavoriteRestaurantIdb.put(this._restaurant);
+      await this._favoriteRestaurants.put(this._restaurant);
       this._renderButton();
     });
   },
 
   _renderFavorited() {
-    this._favoriteButtonContainer.innerHTML = createFavoritedButtonTemplate();
+    this._favoriteButtonContainer.innerHTML = createUnfavoriteRestaurantButtonTemplate();
     const favoriteButton = document.querySelector('#favorite-button');
     favoriteButton.addEventListener('click', async () => {
-      await FavoriteRestaurantIdb.delete(this._restaurant.id);
+      await this._favoriteRestaurants.delete(this._restaurant.id);
       this._renderButton();
     });
   },
 };
 
-export default FavoriteInitiator;
+export default FavoritePresenter;
