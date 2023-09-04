@@ -15,7 +15,7 @@
   },
   "keywords": [],
   "author": "ardi_saputra <ardisaputraa12@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.18.5",
     "@babel/preset-env": "^7.18.2",
